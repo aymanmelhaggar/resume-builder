@@ -1,0 +1,554 @@
+<html>
+
+<head>
+    <style>
+        /*<!--[Exists:Template.Theme.Color]-->*/
+        .themeColor-bg {
+            background-color: <!--[Value:Template.Theme.Color]--> !important;
+        }
+        .themeColor {
+            color: <!--[Value:Template.Theme.Color]--> !important;
+        }
+        /*<!--[EndExists:Template.Theme.Color]-->*/
+        /*<!--[NotExists:Template.Theme.Color]-->*/
+        .themeColor-bg {
+            background-color: brown !important;
+        }
+        .themeColor {
+            color: brown !important;
+        }
+        /*<!--[EndNotExists:Template.Theme.Color]-->*/
+
+        html {
+            background-color: gray;
+        }
+
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0px;
+            padding: 0px;
+            width: 827px;
+            min-height: 1170px;
+        }
+
+        .header {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 827px;
+            height: 170px;
+        }
+
+        .header>.photo {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            bottom: 0px;
+            width: 170px;
+			/*<!--[Exists:PersonalDetails.Form.Photo]-->*/
+            background-image: url('<!--[Value:PersonalDetails.Form.Photo]-->');
+            /*<!--[EndExists:PersonalDetails.Form.Photo]-->*/
+			background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .header>.name {
+            position: absolute;
+            left: 200px;
+            top: 35px;
+            font-size: 24pt;
+            font-weight: bold;
+            color: white;
+
+        }
+
+        .header>.headline {
+            position: absolute;
+            left: 200px;
+            top: 75px;
+            font-size: 14pt;
+            color: white;
+        }
+
+        .header>.info {
+            position: absolute;
+            left: 200px;
+            top: 110px;
+            font-size: 12pt;
+            color: white;
+        }
+
+        .header>.info>div {
+            float: left;
+            padding-right: 10px;
+        }
+
+        .body {
+            position: absolute;
+            left: 0px;
+            top: 170px;
+            width: 827px;
+            min-height: 997px;
+        }
+
+        .body>.left {
+            position: absolute;
+            left: 0px;
+            width: 579px;
+        }
+
+        .body>.split {
+            position: absolute;
+            top: 50px;
+            left: 580px;
+            width: 1px;
+            background-color: silver;
+        }
+
+        .body>.right {
+            position: absolute;
+            right: 20px;
+            width: 206px;
+            background-color: white;
+        }
+
+        .body>.left>.section {
+            padding: 0px 30px 0px 30px;
+        }
+
+        .body>.left>.section>.content {
+            break-inside: avoid;
+        }
+
+        .body>.left>.section>.title {
+            color: brown;
+            font-size: 20px;
+            font-weight: bold;
+            padding-top: 30px;
+        }
+
+        .body>.left>.section>.content>.title>.left {
+            float: left;
+            font-weight: bold;
+            font-size: 16px;
+            padding-top: 20px;
+        }
+
+        .body>.left>.section>.content>.title>.right {
+            float: right;
+            font-weight: bold;
+            font-size: 16px;
+            padding-top: 20px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .body>.left>.section>.content>.subtitle {
+            font-size: 14px;
+            padding-top: 10px;
+            color: gray;
+        }
+
+        .body>.left>.section>.content>.content {
+            font-size: 14px;
+            padding-top: 10px;
+            text-align: justify;
+        }
+
+        .body>.left>.split {
+            height: 1px;
+            margin: auto;
+            width: 85%;
+            background-color: silver;
+            margin-top: 30px;
+        }
+
+        .body>.right.section {
+            padding: 0px 30px 0px 30px;
+        }
+
+        .body>.right>.section>.content {
+            break-inside: avoid;
+        }
+
+        .body>.right>.section>.title {
+            color: brown;
+            font-size: 20px;
+            font-weight: bold;
+            padding-top: 30px;
+        }
+
+        .body>.right>.section>.content>.title {
+            font-size: 14px;
+            padding-top: 15px;
+            color: gray;
+        }
+
+        .body>.right>.section>.content>.content {
+            font-size: 14px;
+            padding-top: 3px;
+            text-align: justify;
+        }
+
+        .body>.right>.split {
+            height: 1px;
+            margin: auto;
+            background-color: silver;
+            margin-top: 30px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        li {
+            padding: 10px 0px 0px 0px;
+            margin: 0px -13px;
+        }
+
+        li:before {
+            content: "·";
+            font-size: 120px;
+            vertical-align: middle;
+            line-height: 20px;
+            color: brown;
+        }
+
+        .rank0,
+        .rank1,
+        .rank2,
+        .rank3,
+        .rank4,
+        .rank5 {
+            border: 1px solid gray;
+            background-color: silver;
+            height: 12px;
+            border-radius: 6px;
+        }
+
+        .rank0>div,
+        .rank1>div,
+        .rank2>div,
+        .rank3>div,
+        .rank4>div,
+        .rank5>div {
+            background-color: brown;
+            height: 12px;
+            float: left;
+            border-radius: 6px;
+        }
+
+        .rank1>div {
+            width: 20%;
+        }
+
+        .rank2>div {
+            width: 40%;
+        }
+
+        .rank3>div {
+            width: 60%;
+        }
+
+        .rank4>div {
+            width: 80%;
+        }
+
+        .rank5>div {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header themeColor-bg">
+		<div class="photo"></div>
+		<div class="name"><!--[Value:PersonalDetails.Form.FirstName]--> <!--[Value:PersonalDetails.Form.LastName]--></div>
+        <div class="headline"><!--[Value:PersonalDetails.Form.Headline]--></div>
+        <div class="info">
+            <div class="address">
+                <!--[Exists:PersonalDetails.Form.Address]-->
+                <svg fill="white" style="width: 13px; margin: 0px 5px -3px 0px;" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z" /></svg><!--[Value:PersonalDetails.Form.Address]-->
+                <!--[EndExists:PersonalDetails.Form.Address]-->
+            </div>
+            <div class="email">
+                <!--[Exists:PersonalDetails.Form.EmailAddress]-->
+                <svg fill="white" style="width: 17px; margin: 0px 5px -3px 0px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z" /></svg><!--[Value:PersonalDetails.Form.EmailAddress]-->
+                <!--[EndExists:PersonalDetails.Form.EmailAddress]-->
+            </div>
+            <div class="phone">
+                <!--[Exists:PersonalDetails.Form.PhoneNumber]-->
+                <svg fill="white" style="width: 17px; margin: 0px 5px -3px 0px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z" /></svg><!--[Value:PersonalDetails.Form.PhoneNumber]-->
+                <!--[EndExists:PersonalDetails.Form.PhoneNumber]-->
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="left">
+            <!--[Exists:Education.Form]-->
+            <div class="section">
+                <div class="title">Education</div>
+                <!--[ForEachIn:Education.Form.List]-->
+                <div class="content">
+                    <div class="title">
+                        <div class="left"><!--[Value:Education.Form.List.Education]--></div>
+                        <div class="right"><!--[Value:Education.Form.List.StartDateMonth]--> <!--[Value:Education.Form.List.StartDateYear]--> - <!--[Exists:Education.Form.List.Present]-->Present<!--[EndExists:Education.Form.List.Present]--><!--[NotExists:Education.Form.List.Present]--><!--[Value:Education.Form.List.EndDateMonth]--> <!--[Value:Education.Form.List.EndDateYear]--><!--[EndNotExists:Education.Form.List.Present]--></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="subtitle"><!--[Value:Education.Form.List.School]--> <!--[Value:Education.Form.List.City]--></div>
+                    <div class="content"><!--[Value:Education.Form.List.Description]--></div>
+                </div>
+                <!--[EndForEachIn:Education.Form.List]-->
+            </div>
+            <!--[EndExists:Education.Form]-->
+            <!--[Exists:Employment.Form]-->
+            <div class="split"></div>
+            <div class="section">
+                <div class="title">Employment</div>
+                <!--[ForEachIn:Employment.Form.List]-->
+                <div class="content">
+                    <div class="title">
+                        <div class="left"><!--[Value:Employment.Form.List.Position]--></div>
+                        <div class="right"><!--[Value:Employment.Form.List.StartDateMonth]--> <!--[Value:Employment.Form.List.StartDateYear]--> - <!--[Exists:Employment.Form.List.Present]-->Present<!--[EndExists:Employment.Form.List.Present]--><!--[NotExists:Employment.Form.List.Present]--><!--[Value:Employment.Form.List.EndDateMonth]--> <!--[Value:Employment.Form.List.EndDateYear]--><!--[EndNotExists:Employment.Form.List.Present]--></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="subtitle"><!--[Value:Employment.Form.List.Employer]--> <!--[Value:Employment.Form.List.City]--></div>
+                    <div class="content"><!--[Value:Employment.Form.List.Description]--></div>
+                </div>
+                <!--[EndForEachIn:Employment.Form.List]-->
+            </div>
+            <!--[EndExists:Employment.Form]-->
+            <!--[Exists:Profile.Form]-->
+            <div class="split"></div>
+            <div class="section">
+                <div class="title">Profile</div>
+                <div class="content">
+                    <div class="content"><!--[Value:Profile.Form.Description]--></div>
+                </div>
+            </div>
+            <!--[EndExists:Profile.Form]-->
+            <!--[Exists:Courses.Form]-->
+            <div class="split"></div>
+            <div class="section">
+                <div class="title">Courses</div>
+                <!--[ForEachIn:Courses.Form.List]-->
+                <div class="content">
+                    <div class="title">
+                        <div class="left"><!--[Value:Courses.Form.List.Course]--></div>
+                        <div class="right"><!--[Exists:Courses.Form.List.Present]-->Present<!--[EndExists:Courses.Form.List.Present]--><!--[NotExists:Courses.Form.List.Present]--><!--[Value:Courses.Form.List.PeriodMonth]--> <!--[Value:Courses.Form.List.PeriodYear]--><!--[EndNotExists:Courses.Form.List.Present]--></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="content"><!--[Value:Courses.Form.List.Description]--></div>
+                </div>
+                <!--[EndForEachIn:Courses.Form.List]-->
+            </div>
+            <!--[EndExists:Courses.Form]-->
+            <!--[Exists:Internships.Form]-->
+            <div class="split"></div>
+            <div class="section">
+                <div class="title">Internships</div>
+                <!--[ForEachIn:Internships.Form.List]-->
+                <div class="content">
+                    <div class="title">
+                        <div class="left"><!--[Value:Internships.Form.List.Position]--></div>
+                        <div class="right"><!--[Value:Internships.Form.List.StartDateMonth]--> <!--[Value:Internships.Form.List.StartDateYear]--> - <!--[Exists:Internships.Form.List.Present]-->Present<!--[EndExists:Internships.Form.List.Present]--><!--[NotExists:Internships.Form.List.Present]--><!--[Value:Internships.Form.List.EndDateMonth]--> <!--[Value:Internships.Form.List.EndDateYear]--><!--[EndNotExists:Internships.Form.List.Present]--></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="subtitle"><!--[Value:Internships.Form.List.Employer]--> <!--[Value:Internships.Form.List.City]--></div>
+                    <div class="content"><!--[Value:Internships.Form.List.Description]--></div>
+                </div>
+                <!--[EndForEachIn:Internships.Form.List]-->
+            </div>
+            <!--[EndExists:Internships.Form]-->
+            <!--[Exists:ExtracurricularActivities.Form]-->
+            <div class="split"></div>
+            <div class="section">
+                <div class="title">Extracurricular activities</div>
+                <!--[ForEachIn:ExtracurricularActivities.Form.List]-->
+                <div class="content">
+                    <div class="title">
+                        <div class="left"><!--[Value:ExtracurricularActivities.Form.List.Position]--></div>
+                        <div class="right"><!--[Value:ExtracurricularActivities.Form.List.StartDateMonth]--> <!--[Value:ExtracurricularActivities.Form.List.StartDateYear]--> - <!--[Exists:ExtracurricularActivities.Form.List.Present]-->Present<!--[EndExists:ExtracurricularActivities.Form.List.Present]--><!--[NotExists:ExtracurricularActivities.Form.List.Present]--><!--[Value:ExtracurricularActivities.Form.List.EndDateMonth]--> <!--[Value:ExtracurricularActivities.Form.List.EndDateYear]--><!--[EndNotExists:ExtracurricularActivities.Form.List.Present]--></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="subtitle"><!--[Value:ExtracurricularActivities.Form.List.Employer]--> <!--[Value:ExtracurricularActivities.Form.List.City]--></div>
+                    <div class="content"><!--[Value:ExtracurricularActivities.Form.List.Description]--></div>
+                </div>
+                <!--[EndForEachIn:ExtracurricularActivities.Form.List]-->
+            </div>
+            <!--[EndExists:ExtracurricularActivities.Form]-->
+            <!--[Exists:References.Form]-->
+            <div class="split"></div>
+            <div class="section">
+                <div class="title">References</div>
+                <!--[ForEachIn:References.Form.List]-->
+                <div class="content">
+                    <div class="title">
+                        <div class="left"><!--[Value:References.Form.List.Name]--></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="subtitle"><!--[Value:References.Form.List.Organization]--> <!--[Value:References.Form.List.City]--></div>
+                    <div class="subtitle"><!--[Exists:References.Form.List.PhoneNumber]--><svg style="width: 11px; margin: 0px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z" /></svg><!--[Value:References.Form.List.PhoneNumber]--><!--[EndExists:References.Form.List.PhoneNumber]--> <!--[Exists:References.Form.List.EmailAddress]--><svg style="padding-left: 20px; width: 11px; margin: 0px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z" /></svg><!--[Value:References.Form.List.EmailAddress]--><!--[EndExists:References.Form.List.EmailAddress]--></div>
+                    <div class="content"><!--[Value:References.Form.List.Description]--></div>
+                </div>
+                <!--[EndForEachIn:References.Form.List]-->
+            </div>
+            <!--[EndExists:References.Form]-->
+            <!--[Exists:Certificates.Form]-->
+            <div class="split"></div>
+            <div class="section">
+                <div class="title">Certificates</div>
+                <!--[ForEachIn:Certificates.Form.List]-->
+                <div class="content">
+                    <div class="title">
+                        <div class="left"><!--[Value:Certificates.Form.List.Certificate]--></div>
+                        <div class="right"><!--[Exists:Certificates.Form.List.Present]-->Present<!--[EndExists:Certificates.Form.List.Present]--><!--[NotExists:Certificates.Form.List.Present]--><!--[Value:Certificates.Form.List.PeriodMonth]--> <!--[Value:Certificates.Form.List.PeriodYear]--><!--[EndNotExists:Certificates.Form.List.Present]--></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="content"><!--[Value:Certificates.Form.List.Description]--></div>
+                </div>
+                <!--[EndForEachIn:Certificates.Form.List]-->
+            </div>
+            <!--[EndExists:Certificates.Form]-->
+            <!--[Exists:Achievements.Form]-->
+            <div class="split"></div>
+            <div class="section">
+                <div class="title">Achievements</div>
+                <div class="content">
+                    <div class="content"><!--[Value:Achievements.Form.Description]--></div>
+                </div>
+            </div>
+            <!--[EndExists:Achievements.Form]-->
+        </div>
+        <div class="split" id="hsplit"></div>
+        <div class="right">
+            <!--[Exists:PersonalDetails.Form]-->
+            <div class="section">
+                <div class="title">Personal details</div>
+                <!--[Exists:PersonalDetails.Form.DateOfBirth]-->
+                <div class="content">
+                    <div class="title">Date of Birth</div>
+                    <div class="content"><!--[Value:PersonalDetails.Form.DateOfBirth]--></div>
+                </div>
+                <!--[EndExists:PersonalDetails.Form.DateOfBirth]-->
+                <!--[Exists:PersonalDetails.Form.PlaceOfBirth]-->
+                <div class="content">
+                    <div class="title">Place of Birth</div>
+                    <div class="content"><!--[Value:PersonalDetails.Form.PlaceOfBirth]--></div>
+                </div>
+                <!--[EndExists:PersonalDetails.Form.PlaceOfBirth]-->
+                <!--[Exists:PersonalDetails.Form.DriversLicense]-->
+                <div class="content">
+                    <div class="title">Driver's License</div>
+                    <div class="content"><!--[Value:PersonalDetails.Form.DriversLicense]--></div>
+                </div>
+                <!--[EndExists:PersonalDetails.Form.DriversLicense]-->
+                <!--[Exists:PersonalDetails.Form.Gender]-->
+                <div class="content">
+                    <div class="title">Gender</div>
+                    <div class="content"><!--[Value:PersonalDetails.Form.Gender]--></div>
+                </div>
+                <!--[EndExists:PersonalDetails.Form.Gender]-->
+                <!--[Exists:PersonalDetails.Form.Nationality]-->
+                <div class="content">
+                    <div class="title">Nationality</div>
+                    <div class="content"><!--[Value:PersonalDetails.Form.Nationality]--></div>
+                </div>
+                <!--[EndExists:PersonalDetails.Form.Nationality]-->
+                <!--[Exists:PersonalDetails.Form.CivilStatus]-->
+                <div class="content">
+                    <div class="title">Civil Status</div>
+                    <div class="content"><!--[Value:PersonalDetails.Form.CivilStatus]--></div>
+                </div>
+                <!--[EndExists:PersonalDetails.Form.CivilStatus]-->
+                <!--[Exists:PersonalDetails.Form.Website]-->
+                <div class="content">
+                    <div class="title">Website</div>
+                    <div class="content"><!--[Value:PersonalDetails.Form.Website]--></div>
+                </div>
+                <!--[EndExists:PersonalDetails.Form.Website]-->
+                <!--[Exists:PersonalDetails.Form.LinkedIn]-->
+                <div class="content">
+                    <div class="title">LinkedIn</div>
+                    <div class="content"><!--[Value:PersonalDetails.Form.LinkedIn]--></div>
+                </div>
+                <!--[EndExists:PersonalDetails.Form.LinkedIn]-->
+            </div>
+            <!--[EndExists:PersonalDetails.Form]-->
+            <!--[Exists:Skills.Form]-->
+            <div class="split"></div>
+            <div class="section">
+                <div class="title">Skills</div>
+                <!--[ForEachIn:Skills.Form.List]-->
+                <div class="content">
+                    <div class="title"><!--[Value:Skills.Form.List.Skill]--></div>
+                    <div class="content">
+                        <div class="rank<!--[Value:Skills.Form.List.Level]-->">
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <!--[EndForEachIn:Skills.Form.List]-->
+            </div>
+            <!--[EndExists:Skills.Form]-->
+            <!--[Exists:Languages.Form]-->
+            <div class="split"></div>
+            <div class="section">
+                <div class="title">Languages</div>
+                <!--[ForEachIn:Languages.Form.List]-->
+                <div class="content">
+                    <div class="title"><!--[Value:Languages.Form.List.Language]--></div>
+                    <div class="content">
+                        <div class="rank<!--[Value:Languages.Form.List.Level]-->">
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <!--[EndForEachIn:Languages.Form.List]-->
+            </div>
+            <!--[EndExists:Languages.Form]-->
+            <!--[Exists:Hobbies.Form]-->
+            <div class="split"></div>
+            <div class="section">
+                <div class="title">Hobbies</div>
+                <div class="content">
+                    <ul>
+                        <!--[ForEachIn:Hobbies.Form.List]-->
+                        <li><!--[Value:Hobbies.Form.List.Hobby]--></li>
+                        <!--[EndForEachIn:Hobbies.Form.List]-->
+                    </ul>
+                </div>
+            </div>
+            <!--[EndExists:Hobbies.Form]-->
+            <!--[Exists:Qualities.Form]-->
+            <div class="split"></div>
+            <div class="section">
+                <div class="title">Qualities</div>
+                <div class="content">
+                    <ul>
+                        <!--[ForEachIn:Qualities.Form.List]-->
+                        <li><!--[Value:Qualities.Form.List.Quality]--></li>
+                        <!--[EndForEachIn:Qualities.Form.List]-->
+                    </ul>
+                </div>
+            </div>
+            <!--[EndExists:Qualities.Form]-->
+        </div>
+    </div>
+    <script>
+        var element = document.getElementById("hsplit");
+        var body = document.body, html = document.documentElement;
+        var height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+        body.style.height = `${Math.ceil(height / 1170) * 1170}px`;
+        height = Math.ceil(height / 1170) * 1170 - 270;
+        element.style.height = `${height}px`;
+    </script>
+</body>
+
+</html>

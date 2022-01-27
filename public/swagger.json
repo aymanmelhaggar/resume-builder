@@ -1,0 +1,2088 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This are APIs server for resume build.",
+        "version": "1.0.0",
+        "title": "Swagger Resume Builder",
+        
+        "contact": {
+            "email": "ayman.m.elhaggar@gmail.com"
+        }
+    },
+    "tags": [
+        {
+            "name": "Database",
+            "description": "APIs for database actions"
+        },
+        {
+            "name": "User",
+            "description": "APIs for users actions"
+        },
+        {
+            "name": "Resume Steps",
+            "description": "APIs for Resume Steps actions"
+        },
+        {
+            "name": "Resume Forms",
+            "description": "APIs for Resume Forms actions"
+        },
+        {
+            "name": "Resume Fields",
+            "description": "APIs for Resume Form Fields actions"
+        },
+        {
+            "name": "Resume Field Types",
+            "description": "APIs for Resume Form Fields Types actions"
+        },
+        {
+            "name": "Resume Templates",
+            "description": "APIs for Resume Templates actions"
+        },
+        {
+            "name": "Resumes",
+            "description": "APIs for Resumes actions"
+        }
+    ],
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/db/init": {
+            "post": {
+                "summary": "Initialize the database",
+                "tags": [
+                    "Database"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/db/seed-demo": {
+            "post": {
+                "summary": "Initialize the database",
+                "tags": [
+                    "Database"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/db/clear": {
+            "post": {
+                "summary": "Initialize the database",
+                "tags": [
+                    "Database"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/users/register": {
+            "post": {
+                "summary": "Register a new user",
+                "tags": [
+                    "User"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The user to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "Test User"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "admin@dalialabs.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "P@$$w0rd"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/login": {
+            "post": {
+                "summary": "Login a user",
+                "tags": [
+                    "User"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The user to login.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "admin@dalialabs.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "P@$$w0rd"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/login-guest": {
+            "post": {
+                "summary": "Login a guest user",
+                "tags": [
+                    "User"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/users/logout": {
+            "get": {
+                "summary": "Logout a user",
+                "tags": [
+                    "User"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/users/logout-all": {
+            "get": {
+                "summary": "Logout a user from all places",
+                "tags": [
+                    "User"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/users/me": {
+            "get": {
+                "summary": "Get logged in user",
+                "tags": [
+                    "User"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "patch": {
+                "summary": "Update logged in user data",
+                "tags": [
+                    "User"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The user to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "Test User"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "default": "admin@dalialabs.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "default": "P@$$w0rd"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/users/me/image": {
+            "get": {
+                "summary": "Get logged in user image",
+                "tags": [
+                    "User"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete logged in user image",
+                "tags": [
+                    "User"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "patch": {
+                "summary": "Update logged in user image",
+                "tags": [
+                    "User"
+                ],
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "image",
+                        "in": "formData",
+                        "description": "Image file to upload",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/users": {
+            "post": {
+                "summary": "Create a user",
+                "tags": [
+                    "User"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The user to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "Test User"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "admin@dalialabs.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "P@$$w0rd"
+                                },
+                                "roles": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "Required": true,
+                                    "default": [
+                                        "admin"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "get": {
+                "summary": "Search for users",
+                "tags": [
+                    "User"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "limit",
+                        "description": "Limit the result size",
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "skip",
+                        "description": "Skip first N results",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "summary": "Get user data",
+                "tags": [
+                    "User"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "patch": {
+                "summary": "Update user data",
+                "tags": [
+                    "User"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "user",
+                        "description": "The user to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "Test User"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "default": "admin@dalialabs.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "default": "P@$$w0rd"
+                                },
+                                "roles": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "default": [
+                                        "admin"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete user data",
+                "tags": [
+                    "User"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/users/{id}/image": {
+            "get": {
+                "summary": "Get user image",
+                "tags": [
+                    "User"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete user image",
+                "tags": [
+                    "User"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "patch": {
+                "summary": "Update user image",
+                "tags": [
+                    "User"
+                ],
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "image",
+                        "in": "formData",
+                        "description": "Image file to upload",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resume-steps": {
+            "get": {
+                "summary": "Get all resume steps",
+                "tags": [
+                    "Resume Steps"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Create new resume step",
+                "tags": [
+                    "Resume Steps"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "resumeStep",
+                        "description": "The resume step to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "Step1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "Step 1"
+                                },
+                                "is_optional": {
+                                    "type": "boolean",
+                                    "Required": true,
+                                    "default": true
+                                },
+                                "order": {
+                                    "type": "number",
+                                    "format": "int32",
+                                    "Required": true,
+                                    "default": 0
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resume-steps/{id}": {
+            "get": {
+                "summary": "Get resume step",
+                "tags": [
+                    "Resume Steps"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "patch": {
+                "summary": "Update resume step",
+                "tags": [
+                    "Resume Steps"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "resumeStep",
+                        "description": "The resume step to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "Step1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "default": "Step 1"
+                                },
+                                "is_optional": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "order": {
+                                    "type": "number",
+                                    "format": "int32",
+                                    "default": 0
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete resume step",
+                "tags": [
+                    "Resume Steps"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resume-forms": {
+            "get": {
+                "summary": "Get all resume forms",
+                "tags": [
+                    "Resume Forms"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Create new resume form",
+                "tags": [
+                    "Resume Forms"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "resumeStep",
+                        "description": "The resume step to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "Step1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "Step 1"
+                                },
+                                "is_optional": {
+                                    "type": "boolean",
+                                    "Required": true,
+                                    "default": true
+                                },
+                                "order": {
+                                    "type": "number",
+                                    "format": "int32",
+                                    "Required": true,
+                                    "default": 0
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resume-forms/{id}": {
+            "get": {
+                "summary": "Get resume form",
+                "tags": [
+                    "Resume Forms"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "patch": {
+                "summary": "Update resume form",
+                "tags": [
+                    "Resume Forms"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "resumeStep",
+                        "description": "The resume step to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "Step1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "default": "Step 1"
+                                },
+                                "is_optional": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "order": {
+                                    "type": "number",
+                                    "format": "int32",
+                                    "default": 0
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete resume form",
+                "tags": [
+                    "Resume Forms"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resume-fields": {
+            "get": {
+                "summary": "Get all resume fields",
+                "tags": [
+                    "Resume Fields"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Create new resume field",
+                "tags": [
+                    "Resume Fields"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "resumeField",
+                        "description": "The resume step to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "Step1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "Step 1"
+                                },
+                                "is_optional": {
+                                    "type": "boolean",
+                                    "Required": true,
+                                    "default": true
+                                },
+                                "order": {
+                                    "type": "number",
+                                    "format": "int32",
+                                    "Required": true,
+                                    "default": 0
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resume-fields/{id}": {
+            "get": {
+                "summary": "Get resume field",
+                "tags": [
+                    "Resume Fields"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "patch": {
+                "summary": "Update resume field",
+                "tags": [
+                    "Resume Fields"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "resumeStep",
+                        "description": "The resume step to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "Step1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "default": "Step 1"
+                                },
+                                "is_optional": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "order": {
+                                    "type": "number",
+                                    "format": "int32",
+                                    "default": 0
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete resume field",
+                "tags": [
+                    "Resume Fields"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resume-field-types": {
+            "get": {
+                "summary": "Get all resume field types",
+                "tags": [
+                    "Resume Field Types"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resume-templates": {
+            "get": {
+                "summary": "Get all resume templates",
+                "tags": [
+                    "Resume Templates"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Create new resume template",
+                "tags": [
+                    "Resume Templates"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "resumeStep",
+                        "description": "The resume step to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "Step1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "Step 1"
+                                },
+                                "is_optional": {
+                                    "type": "boolean",
+                                    "Required": true,
+                                    "default": true
+                                },
+                                "order": {
+                                    "type": "number",
+                                    "format": "int32",
+                                    "Required": true,
+                                    "default": 0
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resume-templates/{id}": {
+            "get": {
+                "summary": "Get resume template",
+                "tags": [
+                    "Resume Templates"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "patch": {
+                "summary": "Update resume template",
+                "tags": [
+                    "Resume Templates"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "resumeStep",
+                        "description": "The resume step to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "Step1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "default": "Step 1"
+                                },
+                                "is_optional": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "order": {
+                                    "type": "number",
+                                    "format": "int32",
+                                    "default": 0
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete resume template",
+                "tags": [
+                    "Resume Templates"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resume-templates/{id}/html": {
+            "get": {
+                "summary": "Get resume template preview",
+                "tags": [
+                    "Resume Templates"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume step",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resume-templates/validate": {
+            "post": {
+                "summary": "Validate resume template",
+                "tags": [
+                    "Resume Templates"
+                ],
+                "parameters": [
+                    {
+                        "name": "html",
+                        "in": "body",
+                        "description": "HTML of the resume step template",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resumes": {
+            "get": {
+                "summary": "Get all resume",
+                "tags": [
+                    "Resumes"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Create new resume",
+                "tags": [
+                    "Resumes"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "resume",
+                        "description": "The resume to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "template": {
+                                    "type": "string",
+                                    "Required": true
+                                },
+                                "template_color": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "maroon"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resumes/{id}": {
+            "patch": {
+                "summary": "Update resume",
+                "tags": [
+                    "Resumes"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "resume",
+                        "description": "The resume to create.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "template": {
+                                    "type": "string",
+                                    "Required": true
+                                },
+                                "template_color": {
+                                    "type": "string",
+                                    "Required": true,
+                                    "default": "maroon"
+                                },
+                                "current_form": {
+                                    "type": "string",
+                                    "Required": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete resume",
+                "tags": [
+                    "Resumes"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resumes/{id}/data": {
+            "patch": {
+                "summary": "Update resume data",
+                "tags": [
+                    "Resumes"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "form_id",
+                        "in": "path",
+                        "description": "Form Id of the resume",
+                        "type": "string"
+                    },
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "The resume data.",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resumes/{id}/html": {
+            "get": {
+                "summary": "Get resume preview",
+                "tags": [
+                    "Resumes"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        },
+        "/resumes/{id}/pdf": {
+            "get": {
+                "summary": "Get resume as PDF",
+                "tags": [
+                    "Resumes"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the resume",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Completed Successfully"
+                    },
+                    "400": {
+                        "description": "Error: Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ]
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer Token": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "Error": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
